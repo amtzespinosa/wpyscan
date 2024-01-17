@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo python3 /usr/lib/wpyscan/main.py $1 $2

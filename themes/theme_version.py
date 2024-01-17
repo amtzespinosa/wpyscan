@@ -1,0 +1,53 @@
+import re, requests
+
+class ThemeVersionExtractor:
+    DEFAULT_CONFIDENCE = 40
+
+    def __init__(self, target_url, theme_names):
+        self.target_url = target_url
+        self.theme_names = theme_names
+        self.info = []
+
+    def extract_versions(self):
+        for theme_name in self.theme_names:
+            # print(f"\nProcessing theme: {theme_name}")
+            info = self.extract_info(theme_name)
+            if info:
+                self.info.append({'url': theme_name, 'name': info[1], 'version': info[0]})
+
+    def extract_info(self, theme_name):
+        search_url = f'{self.target_url.rstrip("/")}/wp-content/themes/{theme_name}/readme.txt'
+        try:
+            response = requests.get(search_url)
+
+            # Check if the readme file exists
+            if response.status_code == 200:
+                # print(f"Readme found for {plugin_name}")
+                # Extract the plugin name from the readme content
+                theme_name_match = re.search(r'===\s*(.+?)\s*===', response.text)
+                long_name = str(theme_name_match)[43:-5]
+                theme_name = long_name.split("-")[0]
+                # print(plugin_name)
+                
+                if theme_name_match:
+                    readme_theme_name = theme_name_match.group(1).strip()
+                    # print(f"Theme name matched in the readme: {readme_theme_name} (Expected: {theme_name})")
+
+                    # Extract the version using multiple patterns
+                    version_patterns = [
+                        r'Version:\s*([0-9]+\.[0-9]+\.[0-9]+)',
+                        r'Stable tag:\s*([0-9]+\.[0-9]+\.[0-9]+)',
+                        # Add more patterns as needed
+                    ]
+
+                    for pattern in version_patterns:
+                        version_match = re.search(pattern, response.text, re.IGNORECASE)
+                        if version_match:
+                            version = version_match.group(1)
+                            # print(f"Version extracted: {version}")
+                            return version, theme_name
+
+        except requests.exceptions.RequestException as e:
+            print(f"Error searching for {theme_name}: {e}")
+
+        return None, None
