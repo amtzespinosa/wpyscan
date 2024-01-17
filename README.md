@@ -46,7 +46,7 @@ A tool developed in Python for enumerating and scanning **WordPress** websites. 
 ### Windows
 
 > [!NOTE]
-> Still unsure about why but it works better on **Windows** rather that **Linux**. I am working on this but I would appreciate any help.
+> Still unsure about why but it works better on **Windows** rather than on **Linux**. I am working on this but I would appreciate any help.
 
 Just run `setup.bat` file and all requirements will be installed. Then, just run `wpyscan.bat` and you'll be prompted to enter a WordPress URL, enter it and hit enter.
 
