@@ -1,3 +1,9 @@
+<div align="center">
+<b>THIS PROJECT HAS CHANGED LANGUAGE AND SCOPE, VISIT IT HERE: [PwnPress](https://github.com/amtzespinosa/pwnpress)</b>
+This repo will be no longer maintained!
+</div>
+
+
 ![WPyScan](/img/wpyscan_banner.png)
 ---
 <div align="center">
