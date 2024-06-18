@@ -1,5 +1,5 @@
 <div align="center">
-<b>THIS PROJECT HAS CHANGED LANGUAGE AND SCOPE, VISIT IT HERE: [PwnPress](https://github.com/amtzespinosa/pwnpress)</b><br>
+<b>THIS PROJECT HAS CHANGED LANGUAGE AND SCOPE, VISIT IT HERE: https://github.com/amtzespinosa/pwnpress</b><br>
 This repo will be no longer maintained!
 </div>
 
